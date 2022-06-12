@@ -21,18 +21,18 @@ import io.fsbano.repository.ContactRepository;
 
 @RestController
 @Tag(name = "contact", description = "the Contact API")
-@RequestMapping("/api/contact")
+@RequestMapping("/api")
 public class ContactController {
     
     @Autowired
     private ContactRepository _contactRepository;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public List<Contact> Get() {
         return _contactRepository.findAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/contact/{id}", method = RequestMethod.GET)
     public ResponseEntity<Contact> GetById(@PathVariable(value = "id") long id)
     {
         Optional<Contact> contact = _contactRepository.findById(id);
@@ -42,13 +42,13 @@ public class ContactController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "", method =  RequestMethod.POST)
+    @RequestMapping(value = "/contact", method =  RequestMethod.POST)
     public Contact Post(@Valid @RequestBody Contact contact)
     {
         return _contactRepository.save(contact);
     }
 
-    @RequestMapping(value = "/{id}", method =  RequestMethod.PUT)
+    @RequestMapping(value = "/contact/{id}", method =  RequestMethod.PUT)
     public ResponseEntity<Contact> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Contact newContact)
     {
         Optional<Contact> oldContact = _contactRepository.findById(id);
@@ -63,7 +63,7 @@ public class ContactController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/contact/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id)
     {
         Optional<Contact> contact = _contactRepository.findById(id);
