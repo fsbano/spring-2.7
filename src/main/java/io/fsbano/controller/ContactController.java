@@ -14,21 +14,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import io.fsbano.entity.Contact;
 import io.fsbano.repository.ContactRepository;
 
 @RestController
+@Tag(name = "contact", description = "the Contact API")
+@RequestMapping("/api/contact")
 public class ContactController {
     
     @Autowired
     private ContactRepository _contactRepository;
 
-    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public List<Contact> Get() {
         return _contactRepository.findAll();
     }
 
-    @RequestMapping(value = "/contact/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Contact> GetById(@PathVariable(value = "id") long id)
     {
         Optional<Contact> contact = _contactRepository.findById(id);
@@ -38,13 +42,13 @@ public class ContactController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/contact", method =  RequestMethod.POST)
+    @RequestMapping(value = "", method =  RequestMethod.POST)
     public Contact Post(@Valid @RequestBody Contact contact)
     {
         return _contactRepository.save(contact);
     }
 
-    @RequestMapping(value = "/contact/{id}", method =  RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method =  RequestMethod.PUT)
     public ResponseEntity<Contact> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Contact newContact)
     {
         Optional<Contact> oldContact = _contactRepository.findById(id);
@@ -59,7 +63,7 @@ public class ContactController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/contact/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id)
     {
         Optional<Contact> contact = _contactRepository.findById(id);
