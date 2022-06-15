@@ -1,4 +1,4 @@
-package io.fsbano.entity;
+package io.fsbano;
 
 import java.io.Serializable;
 import java.util.UUID;

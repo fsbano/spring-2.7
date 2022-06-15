@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.6.8</version>
+    <version>2.7.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>io.fsbano</groupId>
@@ -14,7 +14,6 @@
   <description>WooCommerce Marketplace</description>
   <properties>
     <java.version>11</java.version>
-    <spring-boot-admin.version>2.6.6</spring-boot-admin.version>
     <spring-native.version>0.11.5</spring-native.version>
   </properties>
   <dependencies>
@@ -22,14 +21,6 @@
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
       <version>1.6.9</version>
-    </dependency>
-    <dependency>
-       <groupId>de.codecentric</groupId>
-       <artifactId>spring-boot-admin-starter-server</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>de.codecentric</groupId>
-      <artifactId>spring-boot-admin-starter-client</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -74,14 +65,7 @@
   </dependencies>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-	    <dependency>
+	          <dependency>
                 <groupId>org.springframework.experimental</groupId>
                 <artifactId>spring-native</artifactId>
                 <version>0.11.5</version>

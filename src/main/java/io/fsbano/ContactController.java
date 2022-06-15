@@ -1,4 +1,4 @@
-package io.fsbano.controller;
+package io.fsbano;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-import io.fsbano.entity.Contact;
-import io.fsbano.repository.ContactRepository;
+import io.fsbano.Contact;
+import io.fsbano.ContactRepository;
 
 @RestController
 @Tag(name = "contact", description = "the Contact API")
