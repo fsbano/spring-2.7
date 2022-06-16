@@ -1,6 +1,7 @@
 package io.fsbano;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -38,7 +39,7 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/contact/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Contact> GetById(@PathVariable(value = "id") long id)
+    public ResponseEntity<Contact> GetById(@PathVariable(value = "id") UUID id)
     {
         Optional<Contact> contact = _contactRepository.findById(id);
         if(contact.isPresent())
@@ -54,7 +55,7 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/contact/{id}", method =  RequestMethod.PUT)
-    public ResponseEntity<Contact> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Contact newContact)
+    public ResponseEntity<Contact> Put(@PathVariable(value = "id") UUID id, @Valid @RequestBody Contact newContact)
     {
         Optional<Contact> oldContact = _contactRepository.findById(id);
         if(oldContact.isPresent()){
@@ -69,7 +70,7 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/contact/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id)
+    public ResponseEntity<Object> Delete(@PathVariable(value = "id") UUID id)
     {
         Optional<Contact> contact = _contactRepository.findById(id);
         if(contact.isPresent()){
