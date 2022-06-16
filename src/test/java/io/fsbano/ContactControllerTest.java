@@ -8,10 +8,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -20,7 +21,7 @@ public class ContactControllerTest {
   private MockMvc mockMvc;
   
   @Test
-  void createNewContact() throws Exception {
+  void newContact() throws Exception {
      String url = "/api/contact";
      mockMvc.perform(
              post(url)
@@ -30,4 +31,16 @@ public class ContactControllerTest {
             ).andExpect(status().isOk())
             .andExpect(jsonPath("$.name", is("Fabio Sbano")));
   }
+
+  @Test
+  void getContact() throws Exception {
+     String url = "/api/contact";
+     mockMvc.perform(
+             get(url)
+             .accept("application/json")
+             .contentType("application/json")
+            ).andExpect(status().isOk())
+            .andExpect(content().string(containsString("Fabio Sbano")));
+  }
+
 }
