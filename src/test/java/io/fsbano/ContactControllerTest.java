@@ -23,10 +23,11 @@ public class ContactControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
+  
+  String url = "/api/contact";
 
   @Test
-  void restAPIContact() throws Exception {
-     String url = "/api/contact";
+  void createContact() throws Exception {
 
      // New Contact
      mockMvc.perform(
@@ -37,7 +38,7 @@ public class ContactControllerTest {
             ).andExpect(status().isOk())
             .andExpect(jsonPath("$.name", is("Fabio Sbano")));
 
-     // Get Contacts
+     // Get Contact
      mockMvc.perform(
              get(url)
              .accept("application/json")
@@ -77,8 +78,6 @@ public class ContactControllerTest {
              delete("/api/contact/" + contact[0].getId())
              .accept("application/json")
              .contentType("application/json")
-             .content("{ \"name\":\"Fabio S. Sbano\", \"email\":\"fsbano@gmail.com\" }")
             ).andExpect(status().isOk());
   }
-
 }
