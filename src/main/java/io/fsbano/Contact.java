@@ -27,6 +27,8 @@ public class Contact implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
+    private String gender;
 
     public Contact() {}
 
@@ -52,6 +54,14 @@ public class Contact implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Override
