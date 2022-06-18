@@ -27,7 +27,7 @@ public class Contact implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String gender;
 
     public Contact() {}

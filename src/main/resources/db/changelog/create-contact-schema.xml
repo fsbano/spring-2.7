@@ -31,7 +31,7 @@
 
   <changeSet id="02" author="Fabio Sbano">
     <addColumn tableName="contact">
-       <column name="gender" type="character(36)"/>
+       <column name="gender" type="character(100)"/>
     </addColumn>
 
   <rollback>
@@ -39,6 +39,6 @@
        <column name="gender"/> 
     </dropColumn>
   </rollback>
-
   </changeSet>
+
 </databaseChangeLog>
