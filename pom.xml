@@ -112,7 +112,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
             <jvmArguments>-Dspring.application.admin.enabled=true</jvmArguments>
-	    <image>
+	          <image>
             <builder>paketobuildpacks/builder:tiny</builder>
               <env>
                 <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
@@ -175,7 +175,6 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
-
   <profiles>
     <profile>
       <id>native</id>

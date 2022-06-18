@@ -28,4 +28,17 @@
     -->
 
   </changeSet>
+
+  <changeSet id="02" author="Fabio Sbano">
+    <addColumn tableName="contact">
+       <column name="gender" type="character(36)"/>
+    </addColumn>
+
+  <rollback>
+    <dropColumn columnName="gender" tableName="contact">
+       <column name="gender"/> 
+    </dropColumn>
+  </rollback>
+
+  </changeSet>
 </databaseChangeLog>
