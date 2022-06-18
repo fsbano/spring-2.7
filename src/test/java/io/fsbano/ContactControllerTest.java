@@ -27,7 +27,7 @@ public class ContactControllerTest {
   String url = "/api/contact";
 
   @Test
-  void APIRestContact() throws Exception {
+  void createContact() throws Exception {
 
      // New Contact
      mockMvc.perform(
